@@ -1,4 +1,5 @@
- //assigning my variables brought in from html file
+$(document).ready(function(){
+//assigning my variables brought in from html file
  var citiesSearched = $("#cities-searched");
  var listOfCities = $(".history");
  var currentWeather = $("#today-weather");
@@ -52,8 +53,7 @@
                     cityName.append(img);
                     cardBody.append(cityName, temp, humidity, windSpeed, uv);
                     card.append(cardBody);
-                    currentWeather.append(card);
-                    
+                    currentWeather.append(card);   
                 })
             } getUVindex(latitude,longitude);   
 
@@ -90,18 +90,34 @@
                     }
                   }
                 });
-            }getForecast(userInput);
-    
+            }
+            getForecast(userInput);
+            var cities = $(this).siblings(".history").val();
+            console.log(cities);
+
+            var weatherDisplay = $(this).siblings(".col-8").val();
+            localStorage.setItem(cities, weatherDisplay);
+
+            $(".history").val(localStorage.getItem(cities));
+            $(".col-8").val(localStorage.getItem(weatherDisplay));
+
         })
 
-        
-        
+        var citiesPreviouslySearched = JSON.parse(localStorage.getItem("cities")) || []; 
+
+        if (citiesPreviouslySearched.indexOf(userInput) === -1){
+          citiesPreviouslySearched.push(userInput); 
+          localStorage.setItem("cities", JSON.stringify(citiesPreviouslySearched))
+        }
+        citiesSearched.empty();
+        currentWeather.empty();
+        for (var i = 0; i < citiesPreviouslySearched.length; i++) {
         var li = $("<li>").addClass("list-group-item list-group-item-action");
-        li.text(userInput);
+        li.text(citiesPreviouslySearched[i]);
         citiesSearched.append(li); 
+        }
     }
         citiesSearched.on("click", "li", function() {
-        currentWeather.empty();
         return getCurrentWeather($(this).text());
     });
     
@@ -111,6 +127,12 @@
         currentWeather.empty();
         return getCurrentWeather(userInput);
        
+       
            
     })
-    
+    var citiesPreviouslySearched = JSON.parse(localStorage.getItem("cities")) || []; 
+    if (citiesPreviouslySearched.length > 0) {
+      var length = citiesPreviouslySearched.length; 
+      getCurrentWeather(citiesPreviouslySearched[length - 1])
+    }
+  });
