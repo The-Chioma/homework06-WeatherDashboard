@@ -46,3 +46,6 @@ https://the-chioma.github.io/homework06-WeatherDashboard/
 https://github.com/The-Chioma/homework06-WeatherDashboard
 
 
+
+* Screenshot of deployed application
+![Weather Dashboard](/Screenshotfolder/weatherdashboard.jpg)
