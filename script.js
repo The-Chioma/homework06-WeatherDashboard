@@ -19,7 +19,7 @@
 
             //creating html elements that will appear on the page once search-button is clicked
             var cityName = $("<h3>").addClass("card-title").text(response.name + " (" + new Date().toLocaleDateString() + ")");
-            var card = $("<div>").addClass("card");
+            var card = $("<div>").addClass("card col-12");
             var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + response.wind.speed + " MPH");
             var humidity = $("<p>").addClass("card-text").text("Humidity: " + response.main.humidity + "%");
             var temp = $("<p>").addClass("card-text").text("Temperature: " + response.main.temp + " °C");
