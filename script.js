@@ -9,7 +9,7 @@ $(document).ready(function(){
  
  //this function will get the information for the current weather and display it on the page
  function getCurrentWeather(userInput){
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=a8a6cbd561df9120a6feee123727868c&units=metric"
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=a8a6cbd561df9120a6feee123727868c&units=metric"
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -29,7 +29,7 @@ $(document).ready(function(){
 
             //obtaining the value of the uv index
             function getUVindex(latitude, longitude) {
-                var uvURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=886705b4c1182eb1c69f28eb8c520e20&"
+                var uvURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=886705b4c1182eb1c69f28eb8c520e20&"
                 $.ajax({
                     url: uvURL,
                     method: "GET"
@@ -60,7 +60,7 @@ $(document).ready(function(){
             function getForecast(userInput) {
                 $.ajax({
                   type: "GET",
-                  url: "http://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&appid=a8a6cbd561df9120a6feee123727868c&units=metric",
+                  url: "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&appid=a8a6cbd561df9120a6feee123727868c&units=metric",
                   dataType: "json",
                   success: function(response) {
                     // overwrite any existing content with title and empty row
