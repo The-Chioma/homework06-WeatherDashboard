@@ -25,7 +25,7 @@ $(document).ready(function(){
             var humidity = $("<p>").addClass("card-text").text("Humidity: " + response.main.humidity + "%");
             var temp = $("<p>").addClass("card-text").text("Temperature: " + response.main.temp + " °C");
             var cardBody = $("<div>").addClass("card-body");
-            var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
 
             //obtaining the value of the uv index
             function getUVindex(latitude, longitude) {
@@ -78,7 +78,7 @@ $(document).ready(function(){
             
                         var title = $("<h5>").addClass("card-title").text(new Date(response.list[i].dt_txt).toLocaleDateString());
             
-                        var img2 = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
+                        var img2 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
             
                         var p1 = $("<p>").addClass("card-text").text("Temp: " + response.list[i].main.temp_max + " °C");
                         var p2 = $("<p>").addClass("card-text").text("Humidity: " + response.list[i].main.humidity + "%");
